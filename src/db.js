@@ -1,23 +1,22 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
-const dbName = 'ynabreporting';
 
 class DB {
   constructor() {
-    this.db = null
     this.client = null
+    this.db = null
   }
 
   connect() {
     return new Promise((resolve, reject) => {
-      if (this.client) {
+      if (this.db) {
         resolve()
       } else {
         MongoClient
-          .connect(url)
+          .connect(process.env.mongoUrl)
           .then((client) => {
             this.client = client
-            this.db = client.db(dbName)
+            this.db = client.db(process.env.mongoDBName)
+            console.log(`Connected to ${process.env.mongoDBName}`)
             resolve()
           }, (err) => {
             console.log('Error connecting: ', err.message)
@@ -36,6 +35,13 @@ class DB {
           console.log('Failed to close DB ', err.message)
         })
     }
+  }
+
+  async insertMany(collectionName, documents) {
+    await this.connect()
+    const collection = await this.db.collection(collectionName)
+    await collection.insertMany(documents)
+    this.close()
   }
 }
 
