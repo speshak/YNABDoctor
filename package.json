@@ -1,0 +1,23 @@
+{
+  "name": "ynabreporting",
+  "version": "0.0.1",
+  "description": "Generate reports for your YNAB Budget",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gruberb/YNABReporting.git"
+  },
+  "keywords": [
+    "nodejs",
+    "ynab"
+  ],
+  "author": "Bastian Gruber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gruberb/YNABReporting/issues"
+  },
+  "homepage": "https://github.com/gruberb/YNABReporting#readme"
+}
