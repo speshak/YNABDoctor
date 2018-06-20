@@ -4,6 +4,7 @@
   "description": "Generate reports for your YNAB Budget",
   "main": "main.js",
   "scripts": {
+    "start": "node src/main.js",
     "test": "test"
   },
   "repository": {
@@ -19,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/gruberb/YNABReporting/issues"
   },
-  "homepage": "https://github.com/gruberb/YNABReporting#readme"
+  "homepage": "https://github.com/gruberb/YNABReporting#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "ynab": "^1.0.0"
+  }
 }
