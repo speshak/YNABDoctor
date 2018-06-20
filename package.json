@@ -23,6 +23,7 @@
   "homepage": "https://github.com/gruberb/YNABReporting#readme",
   "dependencies": {
     "dotenv": "^6.0.0",
+    "mongodb": "^3.0.10",
     "ynab": "^1.0.0"
   }
 }
