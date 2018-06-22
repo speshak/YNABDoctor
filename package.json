@@ -4,7 +4,8 @@
   "description": "Generate reports for your YNAB Budget",
   "main": "main.js",
   "scripts": {
-    "start": "node src/main.js",
+    "build": "tsc",
+    "start": "node built/main.js",
     "test": "test"
   },
   "repository": {
@@ -22,8 +23,13 @@
   },
   "homepage": "https://github.com/gruberb/YNABReporting#readme",
   "dependencies": {
-    "dotenv": "^6.0.0",
     "mongodb": "^3.0.10",
     "ynab": "^1.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "awesome-typescript-loader": "^5.2.0",
+    "source-map-loader": "^0.2.3",
+    "@types/mongodb": "^3.0.21"
   }
 }

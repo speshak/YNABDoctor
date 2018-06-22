@@ -1,4 +1,4 @@
-const ynab = require('ynab')
+import * as ynab from 'ynab'
 const ynabAPI = new ynab.API(process.env.accessToken)
 
 const getId = (budgets, budgetName) => {
