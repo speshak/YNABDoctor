@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const calculatePercentages = require('./handler/calculatePercentages')
+const getMonthlySummaries = require('./handler/getMonthlySummaries')
 import { DB } from './DB'
 
 const db = new DB()
@@ -8,7 +8,7 @@ process.on('exit', db.close)
 
 const setup = async () => {
   await db.connect()
-  calculatePercentages(db).then(() => {
+  getMonthlySummaries(db).then(() => {
     process.exit()
   })
 }
