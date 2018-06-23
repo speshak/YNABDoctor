@@ -1,12 +1,16 @@
 require('dotenv').config()
 
-const importTransactions = require('./handler/importTransactions')
-const DB = require('./db')
+const calculatePercentages = require('./handler/calculatePercentages')
+import { DB } from './DB'
 
-const db = new DB
-db.connect()
+const db = new DB()
 process.on('exit', db.close)
 
-importTransactions(process.env.budgetName, db).then(() => {
-  process.exit()
-})
+const setup = async () => {
+  await db.connect()
+  calculatePercentages(db).then(() => {
+    process.exit()
+  })
+}
+
+setup()

@@ -1,8 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 
-class Db {
+export class DB {
   client = null
   db = null
+
+  constructor() {}
 
   connect() {
     return new Promise((resolve, reject) => {
@@ -35,10 +37,11 @@ class Db {
     }
   }
 
-  async insertMany(collectionName, documents) {
-    const collection = await this.db.collection(collectionName)
-    await collection.insertMany(documents)
+  insertMany(collectionName: string, documents) {
+    return this.db.collection(collectionName).insertMany(documents)
+  }
+
+  getDocuments(collectionName: string) {
+    return this.db.collection(collectionName).find().toArray()
   }
 }
-
-module.exports = Db;

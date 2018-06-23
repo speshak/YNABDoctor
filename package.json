@@ -27,9 +27,10 @@
     "ynab": "^1.0.0"
   },
   "devDependencies": {
-    "dotenv": "^6.0.0",
+    "@types/mongodb": "^3.0.21",
     "awesome-typescript-loader": "^5.2.0",
-    "source-map-loader": "^0.2.3",
-    "@types/mongodb": "^3.0.21"
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.17.5",
+    "source-map-loader": "^0.2.3"
   }
 }
