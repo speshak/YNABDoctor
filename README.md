@@ -10,6 +10,7 @@ This app is using the official [YNAB API](https://github.com/ynab/ynab-sdk-js).
 
 1. `node` has to be installed
 2. MongoDB has to be installed and running in the background
+3. TypeScript should be installed globally
 
 ## Install
 
@@ -29,4 +30,5 @@ budgetName=YOUR_BUDGET_NAME
 
 ## Start
 
-`npm start`
+1. `npm run build`
+2. `npm start`
