@@ -2,12 +2,13 @@ import * as ynab from 'ynab'
 
 module.exports = async (db) => {
   const transactions = await db.getDocuments('transactions')
+  const filteredTransactions = transactions.filter(t => t.category_name !== null)
+
   const result = {}
+  const summary = { amount: 0, income: 0, outcome: 0, savingsRage: 0}
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-  let netWorth = 0
-
-  transactions.forEach(transaction => {
+  filteredTransactions.forEach(transaction => {
     const month = ynab.utils.convertFromISODateString(transaction.date).getMonth()
     if (result[month]) {
       result[month].push(transaction)
@@ -34,10 +35,22 @@ module.exports = async (db) => {
 
     outcome = outcome * -1
     const difference = income - outcome
-    const savingsRate = ((100 * difference) / income).toFixed(2)
-    netWorth += difference
-    console.log(`${months[i]}: Outcome ${outcome.toFixed(2)}, Income ${income.toFixed(2)}, Difference: ${difference.toFixed(2)}, Savings rate: ${savingsRate}`)
+    const savingsRate = ((100 * difference) / income)
+
+    summary.amount = i
+    summary.income += income
+    summary.outcome += outcome
+    summary.savingsRage += savingsRate
+
+    console.log(`${months[i]}: Outcome ${outcome.toFixed(2)}, Income ${income.toFixed(2)}, Savings rate: ${savingsRate}`)
   }
 
-  console.log(`Our networth is: ${netWorth.toFixed(2)}`)
+  console.log(`
+    Average:
+    income: ${summary.income / summary.amount}
+    outcome: ${summary.outcome / summary.amount}
+    savingsRate: ${summary.savingsRage / summary.amount}
+    `
+  )
+
 }

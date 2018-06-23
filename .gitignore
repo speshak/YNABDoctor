@@ -2,3 +2,4 @@
 node_modules/
 .ENV
 built
+transactions.json
