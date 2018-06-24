@@ -1,7 +1,7 @@
 import * as ynab from 'ynab'
+import { months } from '../dictionaries'
 
 module.exports = async (db) => {
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   const transactions = await db.getDocuments('transactions')
   const netWorthByMonth = {}
   const netWorths = []

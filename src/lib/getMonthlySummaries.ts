@@ -1,12 +1,11 @@
 import * as ynab from 'ynab'
+import { months } from '../dictionaries'
 
 module.exports = async (db) => {
   const transactions = await db.getDocuments('transactions')
   const filteredTransactions = transactions.filter(t => t.category_name !== null)
-
   const result = {}
   const summary = { amount: 0, income: 0, outcome: 0, savingsRage: 0}
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   filteredTransactions.forEach(transaction => {
     const month = ynab.utils.convertFromISODateString(transaction.date).getMonth()
