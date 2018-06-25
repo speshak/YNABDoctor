@@ -9,7 +9,7 @@ const getId = (budgets, budgetName) => {
   }
 }
 
-module.exports = function getBudgetId(budgetName) {
+export default function getBudgetId(budgetName) {
   return ynabAPI.budgets.getBudgets()
     .then((result) => {
       const budgets = result.data.budgets

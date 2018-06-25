@@ -37,11 +37,19 @@ export class DB {
     }
   }
 
-  insertMany(collectionName: string, documents) {
+  import(collectionName: string, documents) {
+    if(!this.db) {
+      this.connect()
+    }
+
     return this.db.collection(collectionName).insertMany(documents)
   }
 
   getDocuments(collectionName: string) {
+    if(!this.db) {
+      this.connect()
+    }
+
     return this.db.collection(collectionName).find().toArray()
   }
 }
