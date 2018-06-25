@@ -37,7 +37,7 @@ export class DB {
     }
   }
 
-  insertMany(collectionName: string, documents) {
+  import(collectionName: string, documents) {
     return this.db.collection(collectionName).insertMany(documents)
   }
 
