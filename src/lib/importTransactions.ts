@@ -1,8 +1,9 @@
-const getBudgetId = require('../lib/getBudgetId')
-const getTransactions = require('../lib/getTransactions')
+import getBudgetId from './getBudgetId'
+import getTransactions from './getTransactions'
 
-module.exports = async (budgetName, db) => {
+export default async function importTransactions(budgetName, db) {
   const id = await getBudgetId(budgetName)
   const transactions = await getTransactions(id)
-  return db.insertMany('transactions', transactions)
+
+  return db.import('transactions', transactions)
 }

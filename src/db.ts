@@ -38,7 +38,9 @@ export class DB {
   }
 
   import(collectionName: string, documents) {
-    return this.db.collection(collectionName).insertMany(documents)
+    return documents.forEach(d => {
+      this.db.collection(collectionName).update({'id': d.id}, d, {upsert: true})
+    })
   }
 
   getDocuments(collectionName: string) {

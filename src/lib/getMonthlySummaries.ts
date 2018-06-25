@@ -1,5 +1,4 @@
 import * as ynab from 'ynab'
-import { months } from '../dictionaries'
 
 module.exports = async (db) => {
   const transactions = await db.getDocuments('transactions')
@@ -41,7 +40,7 @@ module.exports = async (db) => {
     summary.outcome += outcome
     summary.savingsRage += savingsRate
 
-    console.log(`${months[i]}: Outcome ${outcome.toFixed(2)}, Income ${income.toFixed(2)}, Savings rate: ${savingsRate}`)
+    // console.log(`${months[i]}: Outcome ${outcome.toFixed(2)}, Income ${income.toFixed(2)}, Savings rate: ${savingsRate}`)
   }
 
   console.log(`
