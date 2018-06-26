@@ -2,8 +2,8 @@ import getNetWorthOverview from '../handlers/getNetWorthOverview'
 import importTransactions from '../lib/importTransactions'
 
 const initRoutes = (app, db) => {
-  app.get('/netWorthOverview', (req, res, next) => {
-    const overview = getNetWorthOverview(db)
+  app.get('/netWorthOverview', async (req, res, next) => {
+    const overview = await getNetWorthOverview(db)
     res.send(JSON.stringify(overview))
   })
 

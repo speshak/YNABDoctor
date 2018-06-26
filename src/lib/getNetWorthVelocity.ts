@@ -2,18 +2,24 @@ import * as ynab from 'ynab'
 
 export default async function getNetWorthVelocity (db) {
   const transactions = await db.getDocuments('transactions')
-  const netWorthByMonth = {}
+  const netWorth = {}
 
   transactions.forEach(transaction => {
     const date = ynab.utils.convertFromISODateString(transaction.date)
-    const dateString = date.getUTCFullYear() + '-' + date.getMonth()
+    const year = date.getUTCFullYear()
+    const month = date.getMonth() + 1
 
-    if (netWorthByMonth[dateString]) {
-      netWorthByMonth[dateString] += ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 2)
+    if (netWorth[year]) {
+      if (netWorth[year][month]) {
+        netWorth[year][month] += ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 2)
+      } else {
+        netWorth[year][month] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 2)
+      }
     } else {
-      netWorthByMonth[dateString] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 2)
+      netWorth[year] = {}
+      netWorth[year][month] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 2)
     }
   })
 
-  return netWorthByMonth
+  return netWorth
 }

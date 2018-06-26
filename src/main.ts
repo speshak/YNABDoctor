@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+import * as cors from 'cors'
 import * as express from 'express'
 import * as http from 'http'
 
@@ -16,6 +17,8 @@ const setup = async () => {
   await db.connect()
   process.on('exit', db.close)
 
+  // Setup routing
+  app.use(cors())
   initRoutes(app, db)
 
   // Start the server and listen on the default port
