@@ -18,7 +18,6 @@ export default async function importYNAB(budgetName, db) {
   const categoryResponse = await ynabAPI.categories.getCategories(budgetId)
 
   months.forEach(async m => {
-    console.log(m)
     try {
       const budgetMonthResponse = await ynabAPI.months.getBudgetMonth(budgetId, m)
       await db.import('budgetMonths', budgetMonthResponse.data.month)
