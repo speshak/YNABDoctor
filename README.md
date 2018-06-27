@@ -1,4 +1,4 @@
-# YNABReporting
+# YNABDoctor
 
 Using YNAB and the YNAB API to generate customised, monthly reports. After you entered all your transactions every month in YNAB, you can use YNABReporting to automatically send you a report via E-Mail at the end of each month.
 
