@@ -1,4 +1,4 @@
-export const prepositions = [
+export const prepositions: Array<string> = [
   'of',
   'in',
   'to',
@@ -24,4 +24,6 @@ export const prepositions = [
   'under',
   'around',
   'among',
+  'and',
+  'the',
 ]

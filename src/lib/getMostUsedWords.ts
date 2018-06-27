@@ -1,7 +1,6 @@
-import * as ynab from 'ynab'
+import {prepositions} from '../utils/dictionaries'
 
-module.exports = async (db) => {
-  const transactions = await db.getDocuments('transactions')
+export default function getMostUsedWords(transactions) {
   const memos = []
   const hist = {}
   const result = []
@@ -12,7 +11,7 @@ module.exports = async (db) => {
     }
   })
 
-  const words = [].concat.apply([], memos)
+  const words = [].concat.apply([], memos).filter(w => prepositions.indexOf(w) == -1 && w.length > 0)
 
   words.forEach((a) => {
     if (a in hist) {
@@ -28,6 +27,5 @@ module.exports = async (db) => {
 
   result.sort((a, b) =>  b.value - a.value)
 
-  console.log(result)
-  return result
+  return result.slice(0, 10)
 }
