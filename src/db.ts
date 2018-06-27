@@ -38,12 +38,53 @@ export class DB {
   }
 
   import(collectionName: string, documents) {
+    if (collectionName === 'budgetMonths') {
+      this.db.collection(collectionName).update({'month': documents.month}, documents, {upsert: true})
+      return
+    }
+
     return documents.forEach(d => {
       this.db.collection(collectionName).update({'id': d.id}, d, {upsert: true})
     })
   }
 
-  getDocuments(collectionName: string) {
-    return this.db.collection(collectionName).find().toArray()
+  async get(collectionName: string) {
+    return await this.db.collection(collectionName).find().toArray()
+  }
+
+  async getBudgetMonth(date: string) {
+    const query = { month: date }
+    return await this.db.collection('budgetMonths').find(query).toArray()
+  }
+
+  async getSpendings(start: string, end: string) {
+    const spendingsQuery = {
+      amount: {$lte: 0},
+      category_name: {$ne: null },
+      transfer_account_id: {$eq: null},
+      date: {$gte: start, $lte: end}
+    }
+
+    return await this.db.collection('transactions').find(spendingsQuery).toArray()
+  }
+
+  async getIncome(start: string, end: string) {
+    const incomeQuery = {
+      amount: {$gte: 0},
+      category_name: {$ne: null },
+      transfer_account_id: {$eq: null},
+      date: {$gte: start, $lte: end}
+    }
+
+    return await this.db.collection('transactions').find(incomeQuery).toArray()
+  }
+
+  async getPassiveIncome(start: string, end: string, accountIds) {
+    const passiveIncomeQuery = {
+      category_name: {$eq: null },
+      transfer_account_id: {$eq: null},
+      date: {$gte: start, $lte: end}
+    }
+    return await this.db.collection('transactions').find(passiveIncomeQuery).toArray()
   }
 }
