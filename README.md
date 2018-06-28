@@ -106,7 +106,7 @@ A return looks like this:
 }
 ```
 
-1. `/netWorthOverview` gives the added networth for every year and month + the current culmulated networth
+3. `/netWorthOverview` gives the added networth for every year and month + the current culmulated networth
 ```
 {
   "velocity": {
