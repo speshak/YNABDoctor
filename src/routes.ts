@@ -4,7 +4,7 @@ import importYNAB from './lib/importYNAB'
 
 const initRoutes = (app, db) => {
   app.get('/netWorthOverview', async (req, res, next) => {
-    res.send( await getNetWorthOverview(db))
+    res.send(await getNetWorthOverview(db))
   })
 
   app.get('/reports', async (req, res, next) => {

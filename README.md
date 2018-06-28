@@ -50,158 +50,73 @@ A return looks like this:
 
 ```
 {
-  "income": 5000,
-  "outcome": -2000,
-  "addedNetWorth": 3000,
-  "savings": "60%",
-  "passiveIncome": 0,
+  "income": INCOME_THIS_MONTH,
+  "outcome": OUTCOME_THIS_MONTH,
+  "savings": INCOME-OUTCOME,
+  "savingsPercent": PERCENTAGE_OF_SAVINGS_FROM_INCOME,
+  "passiveIncome": INCOME/OUTCOME_WITH_NO_CATEGORY_SUMMARISED,
+  "netWorthPreviousMonth": SUM_OF_NETWORTH_UNTIL_PREV_MONTH,
+  "netWorthThisMonth": SUM_OF_NETWORTH_UNTIL_THIS_MONTH,
+  "addedNetWorth": AMOUNT_OF_ADDED_NETWORTH_ADDED_THIS_MONTH,
   "topExpenses": [
+  // list of transactions from highest negative amount to lowest
     {
-      "amount": -1000,
+      "amount": -2000,
       "category": "Rent",
-      "date": "2018-06-26",
+      "date": "2018-06-01",
       "payee": "Landlord",
-      "memo": "Rent for xxx"
+      "memo": "Apartment at YNAB Street"
     },
-    {
-      "amount": -200,
-      "category": "Travelling",
-      "date": "2018-06-15",
-      "payee": "Hotel XY",
-      "memo": "WE away"
-    },
-    {
-      "amount": -100,
-      "category": "Events",
-      "date": "2018-06-20",
-      "payee": "Party",
-      "memo": "Throwing a birthday pary"
-    },
-    {
-      "amount": -80,
-      "category": "Events",
-      "date": "2018-06-21",
-      "payee": "Train company",
-      "memo": "Train tickets to xy"
-    },
-    {
-      "amount": -50,
-      "category": "Travelling",
-      "date": "2018-06-18",
-      "payee": "Hotel XY",
-      "memo": "Breakfast at the hotel"
-    }
+    ....
   ],
   "topWords": [
+  // List of top mosed used words in Memos without prepositions
     {
       "key": "Groceries",
-      "value": 12
+      "value": 10
     },
-    {
-      "key": "Lunch",
-      "value": 9
-    },
-    {
-      "key": "Breakfast",
-      "value": 8
-    },
-    {
-      "key": "Dinner",
-      "value": 7
-    },
-    {
-      "key": "Beer",
-      "value": 7
-    },
-    {
-      "key": "Food",
-      "value": 5
-    },
-    {
-      "key": "City-Trip",
-      "value": 4
-    },
-    {
-      "key": "Drinks",
-      "value": 3
-    },
-    {
-      "key": "Magazines",
-      "value": 2
-    },
-    {
-      "key": "Snacks",
-      "value": 2
-    }
+    ...
   ],
   "topPayees": [
+    // List of most used Payees
     {
-      "key": "Hotel XY",
+      "key": "Grocery Store",
       "value": 7
     },
-    {
-      "key": "Train company",
-      "value": 5
-    },
-    {
-      "key": "Restaurant XY",
-      "value": 4
-    },
-    {
-      "key": "Snack place",
-      "value": 4
-    },
-    {
-      "key": "Fish restaurant",
-      "value": 4
-    },
-    {
-      "key": "Grocery Store XY",
-      "value": 4
-    },
-    {
-      "key": "Gas company",
-      "value": 3
-    },
-    {
-      "key": "iTunes",
-      "value": 2
-    },
-    {
-      "key": "Netflix",
-      "value": 2
-    },
-    {
-      "key": "Bio Company",
-      "value": 2
-    }
+   ...
   ],
   "categorySpendings": [
-    {
-      "name": "Just for Fun",
-      "amount": -number,
-      "percentageOfOutcome": "XY%"
-    },
+    // Overview over GroupCategories and their spendings
     {
       "name": "Immediate Obligations",
-      "amount": -number,
-      "percentageOfOutcome": "XY%"
+      "amount": -3000,
+      "percentageOfOutcome": "71.66%"
     },
+    ...
+  ],
+  "subCategorySpendings": [
+    // list of all categories and their spendings
     {
-      "name": "Quality of Life Goals",
-      "amount": 0,
-      "percentageOfOutcome": "0.00%"
+      "name": "Rent",
+      "amount": -2000,
+      "percentageOfOutcome": "63.28%"
     },
-    {
-      "name": "True Expenses",
-      "amount": -number,
-      "percentageOfOutcome": "XY%"
-    },
-    {
-      "name": "Family",
-      "amount": -number,
-      "percentageOfOutcome": "XY%"
-    }
+    ...
   ]
+}
+```
+
+1. `/netWorthOverview` gives the added networth for every year and month + the current culmulated networth
+```
+{
+  "velocity": {
+    "2018": {
+      "03": 1000,
+      "04": 200,
+      "05": 3500,
+      "06": 400
+    }
+  },
+  "netWorth": 5100
 }
 ```

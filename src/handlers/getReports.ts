@@ -1,11 +1,13 @@
 import { DateTime } from 'luxon'
 
-import getCategorySpendings from '../lib/getCategorySpendings'
-import getMostUsedWords from '../lib/getMostUsedWords';
+import getGroupCategorySpendings from '../lib/getGroupCategorySpendings'
+import getMostUsedWords from '../lib/getMostUsedWords'
 import getMostUsedPayees from '../lib/getMostUsedPayees'
 import getBiggestExpenses from '../lib/getBiggestExpenses'
 import getAmount from '../lib/getAmount'
-import {start} from 'repl';
+import getSubCategorySpendings from '../lib/getSubCategorySpendings'
+import getNetWorth from '../lib/getNetWorth'
+import getNetworthPreviousMonth from '../lib/getNetworthPreviousMonth'
 
 /*
 Get reports returns information about a certain month (current or last):
@@ -25,7 +27,7 @@ Get reports returns information about a certain month (current or last):
   topCategories: Show the top 10 used categories of the month
 }
 */
-export default async function getReports(db, year, month) {
+export default async function getReports (db, year, month) {
   const startDate = `${year}-${month}-01`
   const endDate = DateTime.fromISO(startDate).endOf('month').toISODate()
 
@@ -43,24 +45,34 @@ export default async function getReports(db, year, month) {
   const income: number = getAmount(incomeTransactions)
   const outcome: number = getAmount(outcomeTransactions)
 
-  const passiveIncome: number = getAmount(passiveIncomeTransactions)
-  const addedNetWorth = income + outcome + passiveIncome
-  const savings = ((addedNetWorth / income) * 100).toFixed(2) + '%'
+  const savingsPercent = (((outcome * -1) / income) * 100)
+  const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
 
+  const passiveIncome: number = getAmount(passiveIncomeTransactions)
+  const savings = income + outcome
+  const addedNetWorth = income + outcome + passiveIncome
+  const netWorthThisMonth = await getNetWorth(db)
+  const netWorthPreviousMonth = await getNetworthPreviousMonth(db, startDate)
+
+  const topExpenses = getBiggestExpenses(outcomeTransactions)
   const topWords = getMostUsedWords(outcomeTransactions)
   const topPayees = getMostUsedPayees(outcomeTransactions)
-  const topExpenses = getBiggestExpenses(outcomeTransactions)
-  const categorySpendings = getCategorySpendings(budgetMonth, categories, outcome)
+  const categorySpendings = getGroupCategorySpendings(budgetMonth, categories, outcome)
+  const subCategorySpendings = getSubCategorySpendings(budgetMonth, outcome)
 
   return {
     income,
     outcome,
-    addedNetWorth,
     savings,
-    passiveIncome,
+    savingsPercent: displaySavings,
+    passiveIncome: Math.round(passiveIncome),
+    netWorthPreviousMonth: Math.round(netWorthPreviousMonth),
+    netWorthThisMonth: Math.round(netWorthThisMonth),
+    addedNetWorth,
     topExpenses,
     topWords,
     topPayees,
     categorySpendings,
+    subCategorySpendings
   }
 }

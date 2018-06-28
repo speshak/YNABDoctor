@@ -1,4 +1,4 @@
-export default function getMostUsedPayees(transactions) {
+export default function getMostUsedPayees (transactions) {
   const hist = {}
   const result = []
 
@@ -13,10 +13,10 @@ export default function getMostUsedPayees(transactions) {
   })
 
   for (let property in hist) {
-    result.push({key: property, value: hist[property]})
+    result.push({ key: property, value: hist[property] })
   }
 
-  result.sort((a, b) =>  b.value - a.value)
+  result.sort((a, b) => b.value - a.value)
 
   return result.slice(0, 10)
 }

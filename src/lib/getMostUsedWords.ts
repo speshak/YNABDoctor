@@ -1,6 +1,6 @@
-import {prepositions} from '../utils/dictionaries'
+import { prepositions } from '../utils/dictionaries'
 
-export default function getMostUsedWords(transactions) {
+export default function getMostUsedWords (transactions) {
   const memos = []
   const hist = {}
   const result = []
@@ -11,7 +11,7 @@ export default function getMostUsedWords(transactions) {
     }
   })
 
-  const words = [].concat.apply([], memos).filter(w => prepositions.indexOf(w) == -1 && w.length > 0)
+  const words = [].concat.apply([], memos).filter(w => prepositions.indexOf(w) === -1 && w.length > 0)
 
   words.forEach((a) => {
     if (a in hist) {
@@ -22,10 +22,10 @@ export default function getMostUsedWords(transactions) {
   })
 
   for (let property in hist) {
-    result.push({key: property, value: hist[property]})
+    result.push({ key: property, value: hist[property] })
   }
 
-  result.sort((a, b) =>  b.value - a.value)
+  result.sort((a, b) => b.value - a.value)
 
   return result.slice(0, 10)
 }

@@ -1,7 +1,7 @@
 import * as ynab from 'ynab'
 import { DateTime } from 'luxon'
 
-export default async function importYNAB(budgetName, db) {
+export default async function importYNAB (budgetName, db) {
   const ynabAPI = new ynab.API(process.env.accessToken)
 
   const months = [
@@ -28,7 +28,7 @@ export default async function importYNAB(budgetName, db) {
 
   try {
     await db.import('categories', categoryResponse.data.category_groups)
-  } catch(e) {
+  } catch (e) {
     console.log(e)
   }
 
@@ -40,7 +40,7 @@ export default async function importYNAB(budgetName, db) {
 
   try {
     await db.import('budgets', budgetsResponse.data.budgets)
-  } catch(e) {
+  } catch (e) {
     console.log(2)
   }
 }

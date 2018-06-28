@@ -25,5 +25,5 @@ export const prepositions: Array<string> = [
   'around',
   'among',
   'and',
-  'the',
+  'the'
 ]
