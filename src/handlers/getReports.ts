@@ -45,14 +45,14 @@ export default async function getReports (db, year, month) {
   const income: number = getAmount(incomeTransactions)
   const outcome: number = getAmount(outcomeTransactions)
 
-  const savingsPercent = (((outcome * -1) / income) * 100)
-  const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
-
   const passiveIncome: number = getAmount(passiveIncomeTransactions)
   const savings = income + outcome
   const addedNetWorth = income + outcome + passiveIncome
-  const netWorthThisMonth = await getNetWorth(db)
+  const netWorthThisMonth = await getNetWorth(db, endDate)
   const netWorthPreviousMonth = await getNetworthPreviousMonth(db, startDate)
+
+  const savingsPercent = ((savings / income) * 100)
+  const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
 
   const topExpenses = getBiggestExpenses(outcomeTransactions)
   const topWords = getMostUsedWords(outcomeTransactions)

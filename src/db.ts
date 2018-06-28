@@ -54,7 +54,7 @@ export class DB {
     return this.db.collection(collectionName).find().toArray()
   }
 
-  async getTransactionsExcludeGivenMonth (date: string) {
+  async getTransactionsUntil (date: string) {
     const query = { date: { $lt: date } }
     return this.db.collection('transactions').find(query).toArray()
   }

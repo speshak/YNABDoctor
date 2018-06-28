@@ -1,7 +1,7 @@
 import * as ynab from 'ynab'
 
-export default async function getNetworthPreviousMonth (db, month) {
-  const transactions = await db.getTransactionsExcludeGivenMonth(month)
+export default async function getNetworthPreviousMonth (db, date) {
+  const transactions = await db.getTransactionsUntil(date)
   let netWorth = 0
 
   transactions.forEach(transaction => {
