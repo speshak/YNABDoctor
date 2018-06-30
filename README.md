@@ -175,3 +175,43 @@ A return looks like this:
   ...
 }
 ```
+
+6. `/spendingHabits` returns the top used payees, words and the highest expenses:
+```
+{
+  "topExpenses": [
+    {
+      "amount": -2000,
+      "category": "Rent",
+      "date": "2018-06-26",
+      "payee": "Landlord",
+      "memo": "Move to new apartment"
+    },
+    ...
+  ],
+  "topWords": [
+    {
+      "key": "Groceries",
+      "value": 37
+    },
+    {
+      "key": "Breakfast",
+      "value": 34
+    },
+    ...
+  ],
+  "topPayees": [
+    {
+      "key": "Bakety next to work",
+      "frequency": 31,
+      "spent": -234.39999999999995
+    },
+    {
+      "key": "Favourite breakfast shop",
+      "frequency": 19,
+      "spent": -121.2
+    },
+    ...
+  ]
+}
+```
