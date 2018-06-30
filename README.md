@@ -158,12 +158,22 @@ A return looks like this:
   "2018-04-01": [
     ...
   ],
-  "2018-05-01": [
-    ...
-  ],
-  "2018-06-01": [
-    ...
-  ]
+  ...
 }
 
+```
+
+5. `/savings` returns the savings for every month and year
+```
+{
+  "2018-03-01": {
+    "savings": -227,
+    "savingsPercent": "-27.10%"
+  },
+  "2018-04-01": {
+    "savings": 2708,
+    "savingsPercent": "31.56%"
+  },
+  ...
+}
 ```

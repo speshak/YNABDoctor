@@ -1,6 +1,7 @@
 import handleNetWorthOverview from './handlers/handleNetWorthOverview'
 import handleReports from './handlers/handleReports'
 import handleSpendings from './handlers/handleSpendings'
+import handleSavings from './handlers/handleSavings'
 import importYNAB from './lib/importYNAB'
 
 const initRoutes = (app, db) => {
@@ -21,13 +22,11 @@ const initRoutes = (app, db) => {
   })
 
   app.get('/spendings', async (req, res, next) => {
-    const spendings = await handleSpendings(db)
+    res.status(200).send(await handleSpendings(db))
+  })
 
-    if (spendings) {
-      res.status(200).send(spendings)
-    } else {
-      res.status(404).send('No data available')
-    }
+  app.get('/savings', async (req, res, next) => {
+    res.status(200).send(await handleSavings(db))
   })
 
   app.get('/import', (req, res, next) => {
