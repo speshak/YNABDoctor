@@ -17,7 +17,8 @@ export default async function handleSpendings (db) {
 
   let result = {
     averagePercent: '',
-    average: 0
+    average: 0,
+    sumPerMonth: []
   }
 
   let percentageSum = 0
@@ -42,6 +43,10 @@ export default async function handleSpendings (db) {
 
     const spendings = getGroupCategorySpendings(budgetMonth, categories, outcome)
     result[date] = spendings
+
+    let ob = {}
+    ob[date] = Math.round(outcome * -1)
+    result.sumPerMonth.push(ob)
 
     date = moment(date).add(1, 'M').format('YYYY-MM-DD')
     i = i + 1

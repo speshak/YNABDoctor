@@ -130,6 +130,20 @@ A return looks like this:
 {
   "averagePercent": "50%",
   "average": 2000,
+  "sumPerMonth": [
+      {
+        "2018-03-01": 500
+      },
+      {
+        "2018-04-01": 1000
+      },
+      {
+        "2018-05-01": 13000
+      },
+      {
+        "2018-06-01": 1250
+      }
+    ],
   "2018-03-01": [
     {
       "name": "Immediate Obligations",
