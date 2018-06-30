@@ -2,6 +2,8 @@ import handleNetWorthOverview from './handlers/handleNetWorthOverview'
 import handleReports from './handlers/handleReports'
 import handleSpendings from './handlers/handleSpendings'
 import handleSavings from './handlers/handleSavings'
+import handleSpendingHabits from './handlers/handleSpendingHabits'
+import handleCheckUp from './handlers/handleCheckUp'
 import importYNAB from './lib/importYNAB'
 
 const initRoutes = (app, db) => {
@@ -27,6 +29,14 @@ const initRoutes = (app, db) => {
 
   app.get('/savings', async (req, res, next) => {
     res.status(200).send(await handleSavings(db))
+  })
+
+  app.get('/spendingHabits', async (req, res, next) => {
+    res.status(200).send(await handleSpendingHabits(db))
+  })
+
+  app.get('/checkUp', async (req, res, next) => {
+    res.status(200).send(await handleCheckUp(db))
   })
 
   app.get('/import', (req, res, next) => {
