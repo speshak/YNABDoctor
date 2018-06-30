@@ -13,7 +13,7 @@ const initRoutes = (app, db) => {
     const report = await getReports(db, year, month)
 
     if (report) {
-      res.status(200).send(await getReports(db, year, month))
+      res.status(200).send(report)
     } else {
       res.status(404).send('No data available for this time frame')
     }

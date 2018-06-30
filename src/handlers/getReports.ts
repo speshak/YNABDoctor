@@ -40,6 +40,7 @@ export default async function getReports (db, year, month) {
   const incomeTransactions = await db.getIncome(startDate, endDate)
   const outcomeTransactions = await db.getSpendings(startDate, endDate)
   const passiveIncomeTransactions = await db.getPassiveIncome(startDate, endDate)
+
   const categories = await db.get('categories')
   const income: number = getAmount(incomeTransactions)
   const outcome: number = getAmount(outcomeTransactions)

@@ -82,10 +82,21 @@ export class DB {
 
   async getIncome (start: string, end: string) {
     const incomeQuery = {
-      amount: { $gte: 0 },
-      category_name: { $ne: null },
-      transfer_account_id: { $eq: null },
-      date: { $gte: start, $lte: end }
+      $and: [ {
+        payee_name: { $ne: 'Starting Balance' },
+        amount: { $gte: 0 },
+        category_name: { $ne: null },
+        transfer_account_id: { $eq: null },
+        date: { $gte: start, $lte: end }
+      },
+        {
+          payee_name: { $ne: 'Dividends' },
+          amount: { $gte: 0 },
+          category_name: { $ne: null },
+          transfer_account_id: { $eq: null },
+          date: { $gte: start, $lte: end }
+        }
+      ]
     }
 
     return this.db.collection('transactions').find(incomeQuery).toArray()
@@ -94,13 +105,16 @@ export class DB {
   async getPassiveIncome (start: string, end: string) {
     const passiveIncomeQuery = {
       $or: [ {
-        amount: { $gt: 0 },
         category_name: { $eq: null },
         transfer_account_id: { $eq: null },
         date: { $gte: start, $lte: end }
       },
         {
           payee_name: 'Dividends',
+          date: { $gte: start, $lte: end }
+        },
+        {
+          payee_name: 'Starting Balance',
           date: { $gte: start, $lte: end }
         }
       ]
