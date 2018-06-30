@@ -124,3 +124,46 @@ A return looks like this:
   "netWorth": 5100
 }
 ```
+
+4. `/spendings` returns spendings by GroupCategroy for every month and year
+```
+{
+  "2018-03-01": [
+    {
+      "name": "Immediate Obligations",
+      "amount": -640,
+      "percentageOfOutcome": "59.95%"
+    },
+    {
+      "name": "True Expenses",
+      "amount": -387.59,
+      "percentageOfOutcome": "36.31%"
+    },
+    {
+      "name": "Quality of Life Goals",
+      "amount": 0,
+      "percentageOfOutcome": "0.00%"
+    },
+    {
+      "name": "Family",
+      "amount": 0,
+      "percentageOfOutcome": "0.00%"
+    },
+    {
+      "name": "Just for Fun",
+      "amount": 0,
+      "percentageOfOutcome": "0.00%"
+    }
+  ],
+  "2018-04-01": [
+    ...
+  ],
+  "2018-05-01": [
+    ...
+  ],
+  "2018-06-01": [
+    ...
+  ]
+}
+
+```
