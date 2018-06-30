@@ -85,6 +85,16 @@ export class DB {
     return this.db.collection('transactions').find(spendingsQuery).toArray()
   }
 
+  async getSmallCaps () {
+    const spendingsQuery = {
+      amount: { $gte: -20000, $lte: 0 },
+      category_name: { $ne: null },
+      transfer_account_id: { $eq: null }
+    }
+
+    return this.db.collection('transactions').find(spendingsQuery).toArray()
+  }
+
   async getIncome (start: string, end: string) {
     const incomeQuery = {
       $and: [ {

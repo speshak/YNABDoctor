@@ -128,6 +128,8 @@ A return looks like this:
 4. `/spendings` returns spendings by GroupCategroy for every month and year
 ```
 {
+  "averagePercent": "50%",
+  "average": 2000,
   "2018-03-01": [
     {
       "name": "Immediate Obligations",
@@ -210,6 +212,39 @@ A return looks like this:
       "key": "Favourite breakfast shop",
       "frequency": 19,
       "spent": -121.2
+    },
+    ...
+  ]
+}
+```
+
+7. `/checkUp` returns for now "small cap spendings" (spendings between 20 and 0 Euro/Dollar). It's there to highlight how much of an impact have little day-to-day expenses like Coffee2Go etc.
+```
+{
+  "averageSavingsPercent": 30,
+  "overallSmallCapSpendings": -2800,
+  "smallCapInPercent": "10%",
+  "mostUsedSmallCapPayees": [
+    {
+      "key": "CoffeShop",
+      "frequency": 29,
+      "spent": -189.79999999999998
+    },
+    {
+      "key": "Breakfst shop",
+      "frequency": 19,
+      "spent": -121.2
+    },
+    ...
+  ],
+  "mostUsedSmallCapWords": [
+    {
+      "key": "Lunch",
+      "value": 33
+    },
+    {
+      "key": "Breakfast",
+      "value": 32
     },
     ...
   ]
