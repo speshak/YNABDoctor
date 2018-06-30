@@ -64,6 +64,11 @@ export class DB {
     return this.db.collection('transactions').find(query).toArray()
   }
 
+  async getTransactionsFromTo (start: string, end: string) {
+    const query = { date: { $gte: start, $lte: end } }
+    return this.db.collection('transactions').find(query).toArray()
+  }
+
   async getBudgetMonth (date: string) {
     const query = { month: date }
     return this.db.collection('budgetMonths').find(query).toArray()
