@@ -10,13 +10,13 @@ export default async function getNetWorthVelocity (transactions) {
 
     if (netWorth[year]) {
       if (netWorth[year][month]) {
-        netWorth[year][month] += ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 0)
+        netWorth[year][month] += ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 4)
       } else {
-        netWorth[year][month] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 0)
+        netWorth[year][month] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 4)
       }
     } else {
       netWorth[year] = {}
-      netWorth[year][month] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 0)
+      netWorth[year][month] = ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 4)
     }
   })
 

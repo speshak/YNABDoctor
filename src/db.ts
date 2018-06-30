@@ -55,6 +55,11 @@ export class DB {
   }
 
   async getTransactionsUntil (date: string) {
+    const query = { date: { $lte: date } }
+    return this.db.collection('transactions').find(query).toArray()
+  }
+
+  async getTransactionsExcludeUntil (date: string) {
     const query = { date: { $lt: date } }
     return this.db.collection('transactions').find(query).toArray()
   }
@@ -89,12 +94,14 @@ export class DB {
   async getPassiveIncome (start: string, end: string) {
     const passiveIncomeQuery = {
       $or: [ {
+        amount: { $gt: 0 },
         category_name: { $eq: null },
         transfer_account_id: { $eq: null },
         date: { $gte: start, $lte: end }
       },
         {
-          payee_name: 'Dividends'
+          payee_name: 'Dividends',
+          date: { $gte: start, $lte: end }
         }
       ]
     }

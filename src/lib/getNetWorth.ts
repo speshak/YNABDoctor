@@ -5,7 +5,7 @@ export default async function getNetWorth (db, endDate) {
   let netWorth = 0
 
   transactions.forEach(transaction => {
-    netWorth += ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 2)
+    netWorth += ynab.utils.convertMilliUnitsToCurrencyAmount(transaction.amount, 4)
   })
 
   return netWorth
