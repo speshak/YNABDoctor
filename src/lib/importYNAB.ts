@@ -17,8 +17,9 @@ export default async function importYNAB (budgetName, db) {
   const transactionsResponse = await ynabAPI.transactions.getTransactions(budgetId)
   const categoryResponse = await ynabAPI.categories.getCategories(budgetId)
 
+  let i = 0
+
   do {
-    let i = 0
     try {
       const budgetMonthResponse = await ynabAPI.months.getBudgetMonth(budgetId, date)
       await db.import('budgetMonths', budgetMonthResponse.data.month)
@@ -26,9 +27,8 @@ export default async function importYNAB (budgetName, db) {
       console.log(e)
     }
 
-    // Magic to increase the month for every request until we reach the last budgetMonth YNAB gives us
-    date = moment([date.slice(0,4)]).month(parseInt(date.slice(5,7), 10) + i).format('YYYY-MM-DD')
-    i += 1
+    date = moment(date).add(1, 'M').format('YYYY-MM-DD')
+    i = i + 1
   } while (date < end)
 
   try {

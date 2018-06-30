@@ -11,10 +11,19 @@ export default async function handleSpendings (db) {
   let date = getFirstMonth(budgets, process.env.budgetName)
   const end = getLastMonth(budgets, process.env.budgetName)
 
-  let result = {}
+  let result = {
+    averagePercent: '',
+    average: 0
+  }
+
+  let i = 0
+
+  let percentageSum = 0
+  let savingsSum = 0
+  let averagePercent = 0
+  let average = 0
 
   do {
-    let i = 0
     let startDate = date
     let endDate = moment(startDate).endOf('month').format('YYYY-MM-DD')
 
@@ -24,7 +33,9 @@ export default async function handleSpendings (db) {
     const outcome: number = getAmount(outcomeTransactions)
 
     const savings = income + outcome
+    savingsSum += savings
     const savingsPercent = ((savings / income) * 100)
+    percentageSum += savingsPercent
     const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
 
     result[date] = {
@@ -32,10 +43,16 @@ export default async function handleSpendings (db) {
       savingsPercent: displaySavings
     }
 
-    // Magic to increase the month for every request until we reach the last budgetMonth YNAB gives us
-    date = moment([date.slice(0,4)]).month(parseInt(date.slice(5,7), 10) + i).format('YYYY-MM-DD')
-    i += 1
+    date = moment(date).add(1, 'M').format('YYYY-MM-DD')
+    i = i + 1
+
+    averagePercent = percentageSum / i
+    average = savingsSum / i
+
   } while (date < end)
+
+  result.averagePercent = (Math.round(averagePercent * 100) / 100).toFixed(2) + '%'
+  result.average = Math.round(average)
 
   return result
 }
