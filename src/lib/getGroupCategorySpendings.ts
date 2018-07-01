@@ -22,6 +22,6 @@ export default function getCategorySpendings (budget, categories, outcome) {
   return Object.keys(result).map(key => ({
     name: result[key].name,
     amount: result[key].amount,
-    percentageOfOutcome: ((result[key].amount / outcome) * 100).toFixed(2) + '%'
+    percentageOfOutcome: outcome ? ((result[key].amount / outcome) * 100).toFixed(2) + '%' : 0
   })).sort((a, b) => a.amount - b.amount)
 }
