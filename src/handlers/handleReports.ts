@@ -48,7 +48,7 @@ export default async function getReports (db, year, month) {
   const passiveIncome: number = getAmount(passiveIncomeTransactions)
   const savings = income + outcome
   const addedNetWorth = income + outcome + passiveIncome
-  const netWorthThisMonth = await getNetWorth(db, endDate)
+  const currentNetWorth = await getNetWorth(db, endDate)
   const netWorthPreviousMonth = await getNetworthPreviousMonth(db, startDate)
 
   const savingsPercent = ((savings / income) * 100)
@@ -58,7 +58,7 @@ export default async function getReports (db, year, month) {
   const topWords = getMostUsedWords(outcomeTransactions)
   const topPayees = getMostUsedPayees(outcomeTransactions)
   const categorySpendings = getGroupCategorySpendings(budgetMonth, categories, outcome)
-  const subCategorySpendings = getSubCategorySpendings(budgetMonth, outcome)
+  const subCategorySpendings = getSubCategorySpendings(budgetMonth, outcome, income)
 
   return {
     income,
@@ -67,7 +67,7 @@ export default async function getReports (db, year, month) {
     savingsPercent: displaySavings,
     passiveIncome,
     netWorthPreviousMonth,
-    netWorthThisMonth,
+    currentNetWorth,
     addedNetWorth,
     topExpenses,
     topWords,
