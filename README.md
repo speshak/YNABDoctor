@@ -36,8 +36,7 @@ budgetName=YOUR_BUDGET_NAME
 ## Start
 
 1. Start Mongo (usually during typing `mongod` in a terminal window)
-2. `npm run build`
-3. `npm start`
+2. `npm start`
 
 ## Endpoints
 
