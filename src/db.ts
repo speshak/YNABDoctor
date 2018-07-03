@@ -54,6 +54,11 @@ export class DB {
     return this.db.collection(collectionName).find().toArray()
   }
 
+  async getCreditCardAccounts () {
+    const query = { type: 'creditCard' }
+    return this.db.collection('accounts').find(query).toArray()
+  }
+
   async getTransactionsUntil (date: string) {
     const query = { date: { $lte: date } }
     return this.db.collection('transactions').find(query).toArray()
