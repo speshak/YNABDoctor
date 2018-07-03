@@ -4,7 +4,7 @@ import * as cors from 'cors'
 import * as express from 'express'
 import * as http from 'http'
 
-import { DB } from './DB'
+import { DB } from './db'
 import { initRoutes } from './routes'
 
 const setup = async () => {
