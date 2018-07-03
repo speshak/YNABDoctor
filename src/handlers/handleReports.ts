@@ -58,7 +58,7 @@ export default async function getReports (db, year, month) {
   const topWords = getMostUsedWords(outcomeTransactions)
   const topPayees = getMostUsedPayees(outcomeTransactions)
   const categorySpendings = getGroupCategorySpendings(budgetMonth, categories, outcome)
-  const subCategorySpendings = getSubCategorySpendings(budgetMonth, outcome, income)
+  const subCategorySpendings = await getSubCategorySpendings(db, budgetMonth, outcome, income)
 
   return {
     income,

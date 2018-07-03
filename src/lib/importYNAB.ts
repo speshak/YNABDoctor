@@ -16,6 +16,7 @@ export default async function importYNAB (budgetName, db) {
   const budgetId = getId(budgetsResponse.data.budgets, budgetName)
   const transactionsResponse = await ynabAPI.transactions.getTransactions(budgetId)
   const categoryResponse = await ynabAPI.categories.getCategories(budgetId)
+  const accountsResponse = await ynabAPI.accounts.getAccounts(budgetId)
 
   let i = 0
 
@@ -46,6 +47,12 @@ export default async function importYNAB (budgetName, db) {
   try {
     await db.import('budgets', budgetsResponse.data.budgets)
   } catch (e) {
-    console.log(2)
+    console.log(e)
+  }
+
+  try {
+    await db.import('accounts', accountsResponse.data.accounts)
+  } catch (e) {
+    console.log(e)
   }
 }
