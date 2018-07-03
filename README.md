@@ -28,10 +28,6 @@ mongoDBName=DB_NAME_TO_YOUR_LIKING
 budgetName=YOUR_BUDGET_NAME
 ```
 
-In addition, open `src/utils/categoryBlacklist.ts` and add/remove category names you don't want to have listed in the generated reports. For example: I added my CreditCard accounts since I don't want this categories to show up in the generated `SubCategoryOverview`.
-
-**Adding those will not exclude transactions from being calculated and added up, it's just for the endpoint `/reports` to don't show them in the `SubCategoryOverview`.**
-
 ## Start
 
 1. Start Mongo (usually during typing `mongod` in a terminal window)
