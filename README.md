@@ -36,7 +36,7 @@ budgetName=YOUR_BUDGET_NAME
 
 ## Endpoints
 
-So far there are two working endpoints.
+So far there are seven working endpoints.
 1. `/import` fetches following information from YNAB and stores it locally in your database:
 - `budgetMonths`
 - `budgets`
