@@ -1,8 +1,13 @@
 # YNABDoctor
 
-Using YNAB and the YNAB API to generate customised, monthly reports. After you entered all your transactions every month in YNAB, you can use YNABReporting to automatically send you a report via E-Mail at the end of each month.
+Using YNAB and the YNAB API to generate customised reports and get insights into your spending habits.
 
-The report helps you understand your spending habits with clear numbers, and gives you a base for your budgets decisions for the following month.
+YNABDoctor lets you:
+- Identify "Small Cap Spendings": Transactions from 0 to 20 Dollar/Euro. How much percent of your outcome do you spend on coffee, snacks and Co?
+- Generates monthly reports with insights to: How much was my income and outcome this month? How much of my income did I save? How high was my passive income? How much did I add to my NetWorth this month? It also lists top payees, top categories and top words of the month, as well as showing all category spendings with percentage of your income. It answer also questions like: How much percent of my income do I spend on rent?
+- NetWorthOverview: How much do I add each month to my networth and how high is my current networth?
+- Spendings overview: Lists each months and years overall spending, and then lists the categories for each month with percentage of the overall spending
+- Identify spending habits: Returns a list of most used Payees and how much you gave this institution/person over the years. Also lists most common words in your spendings
 
 This app is using the official [YNAB API](https://github.com/ynab/ynab-sdk-js).
 
