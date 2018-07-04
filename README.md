@@ -50,7 +50,7 @@ So far there are seven working endpoints.
 
 With this information we don't need to always get the data from YNAB but can use it to calcualte reports on our own. If we want to update the data, simple `GET` to `https://YOUR_SERVER:PORT/import` will fetch the latest data and update the mongo collections.
 
-1. `/reports?year=2018&month=06` whereas `year` and `month` are parameters which can be filled with different years and months.
+2. `/reports?year=2018&month=06` whereas `year` and `month` are parameters which can be filled with different years and months.
 A return looks like this:
 
 ```
