@@ -7,7 +7,7 @@ import getAmount from '../lib/getAmount'
 const getFirstMonth = (budgets, budgetName) => budgets.find(b => b.name === budgetName).first_month
 const getLastMonth = (budgets, budgetName) => budgets.find(b => b.name === budgetName).last_month
 
-export default async function handleCheckUp (db) {
+export default async function handleCheckUp (db, limit) {
   const smallTransasctions = await db.getSmallCaps()
   const budgets = await db.get('budgets')
 
@@ -18,8 +18,8 @@ export default async function handleCheckUp (db) {
   const overallSpending = getAmount(spendings)
   const overallSmallCapSpendings = Math.round(getAmount(smallTransasctions)) * -1
   const smallCapInPercent = (((overallSmallCapSpendings * -1) / overallSpending) * 100).toFixed(2) + '%'
-  const mostUsedSmallCapWords = getMostUsedWords(smallTransasctions)
-  const mostUsedSmallCapPayees = getMostUsedPayees(smallTransasctions)
+  const mostUsedSmallCapWords = getMostUsedWords(smallTransasctions, limit)
+  const mostUsedSmallCapPayees = getMostUsedPayees(smallTransasctions, limit)
 
   return {
     overallSmallCapSpendings,

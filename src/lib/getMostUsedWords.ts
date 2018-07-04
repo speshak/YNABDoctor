@@ -1,6 +1,6 @@
 import { prepositions } from '../utils/dictionaries'
 
-export default function getMostUsedWords (transactions) {
+export default function getMostUsedWords (transactions, limit = 10) {
   const memos = []
   const hist = {}
   const result = []
@@ -27,5 +27,5 @@ export default function getMostUsedWords (transactions) {
 
   result.sort((a, b) => b.value - a.value)
 
-  return result.slice(0, 10)
+  return result.slice(0, limit)
 }

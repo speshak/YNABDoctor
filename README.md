@@ -233,7 +233,7 @@ A return looks like this:
 }
 ```
 
-7. `/checkUp` returns for now "small cap spendings" (spendings between 20 and 0 Euro/Dollar). It's there to highlight how much of an impact have little day-to-day expenses like Coffee2Go etc.
+7. `/checkUp?limit=NUMBER` returns for now "small cap spendings" (spendings between 20 and 0 Euro/Dollar). It's there to highlight how much of an impact have little day-to-day expenses like Coffee2Go etc.
 ```
 {
   "overallSmallCapSpendings": 2800,

@@ -36,7 +36,8 @@ const initRoutes = (app, db) => {
   })
 
   app.get('/checkUp', async (req, res) => {
-    res.status(200).send(await handleCheckUp(db))
+    const limit = req.query.limit
+    res.status(200).send(await handleCheckUp(db, limit))
   })
 
   app.get('/import', async (req, res) => {

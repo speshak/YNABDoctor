@@ -1,6 +1,6 @@
 import * as ynab from 'ynab'
 
-export default function getMostUsedPayees (transactions) {
+export default function getMostUsedPayees (transactions, limit = 10) {
   const hist = {}
   const result = []
 
@@ -33,5 +33,5 @@ export default function getMostUsedPayees (transactions) {
 
   result.sort((a, b) => b.frequency - a.frequency)
 
-  return result.slice(0, 10)
+  return result.slice(0, limit)
 }
