@@ -38,6 +38,14 @@ budgetName=YOUR_BUDGET_NAME
 1. Start Mongo (usually during typing `mongod` in a terminal window)
 2. `npm start`
 
+## Docker
+
+1. Install [Docker](https://www.docker.com/community-edition#/download)
+2. Set `YNAB_ACCESS_TOKEN` and `YNAB_BUDGET_NAME` environment variables. 
+For example: `export YNAB_ACCESS_TOKEN=XXX`
+3. `docker-compose up` or `docker-compose up -d` to background
+4. Access via `localhost:8080`
+
 ## Endpoints
 
 So far there are seven working endpoints.
