@@ -44,7 +44,7 @@ budgetName=YOUR_BUDGET_NAME
 2. Set `YNAB_ACCESS_TOKEN` and `YNAB_BUDGET_NAME` environment variables. 
 For example: `export YNAB_ACCESS_TOKEN=XXX`
 3. `docker-compose up` or `docker-compose up -d` to background
-4. Access via `localhost:8080`
+4. Access via `localhost:62818`
 
 ## Endpoints
 
