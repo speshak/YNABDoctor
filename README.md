@@ -27,7 +27,8 @@ mongoUrl=URL_TO_YOUR_MONGODB ('mongodb://localhost:27017')
 mongoDBName=DB_NAME_TO_YOUR_LIKING
 budgetName=YOUR_BUDGET_NAME
 ```
-4. `npm start`
+4. **Make sure you have MongoDB installed and running**
+5. `npm start`
 
 
 ## Run with Docker
