@@ -13,38 +13,21 @@ This app is using the official [YNAB API](https://github.com/ynab/ynab-sdk-js).
 
 ## Prerequirements
 
-1. `node` has to be installed
-2. MongoDB has to be installed and running in the background
-3. TypeScript should be installed globally
+- [Docker](https://www.docker.com/community-edition#/download) has to be installed
+- Generate a [YNAB Access Token](https://api.youneedabudget.com/#authentication-overview)
 
-## Install
+## Local development
 
 1. `git clone git@github.com:gruberb/YNABReporting.git`
 2. `cd YNABReporting && npm i`
 
-## Setup
-
-Create a `.env` file in the root directory with:
-
-```
-accessToken=YNAB_API_TOKEN
-mongoUrl=URL_TO_YOUR_MONGODB ('mongodb://localhost:27017')
-mongoDBName=DB_NAME_TO_YOUR_LIKING
-budgetName=YOUR_BUDGET_NAME
-```
-
 ## Start
 
-1. Start Mongo (usually during typing `mongod` in a terminal window)
-2. `npm start`
-
-## Docker
-
-1. Install [Docker](https://www.docker.com/community-edition#/download)
-2. Set `YNAB_ACCESS_TOKEN` and `YNAB_BUDGET_NAME` environment variables. 
-For example: `export YNAB_ACCESS_TOKEN=XXX`
-3. `docker-compose up` or `docker-compose up -d` to background
-4. Access via `localhost:62818`
+1. Set `YNAB_ACCESS_TOKEN` and `YNAB_BUDGET_NAME` environment variables.
+- `export YNAB_ACCESS_TOKEN=XXX`
+- `export YNAB_BUDGET_NAME=XYZ`
+2. `docker-compose up` (or `docker-compose up -d` to background) to run the app
+3. Access via `localhost:62818`
 
 ## Endpoints
 
