@@ -6,15 +6,15 @@ import handleSpendingHabits from './handlers/handleSpendingHabits'
 import handleCheckUp from './handlers/handleCheckUp'
 import importYNAB from './lib/importYNAB'
 
-const initRoutes = (app, db) => {
+const initRoutes = (app, ) => {
   app.get('/netWorthOverview', async (req, res) => {
-    res.send(await handleNetWorthOverview(db))
+    res.send(await handleNetWorthOverview())
   })
 
   app.get('/reports', async (req, res) => {
     const year = req.query.year
     const month = req.query.month
-    const report = await handleReports(db, year, month)
+    const report = await handleReports(year, month)
 
     if (report) {
       res.status(200).send(report)
@@ -24,24 +24,24 @@ const initRoutes = (app, db) => {
   })
 
   app.get('/spendings', async (req, res) => {
-    res.status(200).send(await handleSpendings(db))
+    res.status(200).send(await handleSpendings())
   })
 
   app.get('/savings', async (req, res) => {
-    res.status(200).send(await handleSavings(db))
+    res.status(200).send(await handleSavings())
   })
 
   app.get('/spendingHabits', async (req, res) => {
-    res.status(200).send(await handleSpendingHabits(db))
+    res.status(200).send(await handleSpendingHabits())
   })
 
   app.get('/checkUp', async (req, res) => {
     const limit = req.query.limit
-    res.status(200).send(await handleCheckUp(db, limit))
+    res.status(200).send(await handleCheckUp(limit))
   })
 
   app.get('/import', async (req, res) => {
-    await importYNAB(process.env.budgetName ,db)
+    await importYNAB(process.env.budgetName)
     res.status(200).send('Import Complete!')
   })
 }
