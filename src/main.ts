@@ -22,6 +22,7 @@ const setup = async () => {
   initRoutes(app, db)
 
   // Start the server and listen on the default port
+  console.log(process.env)
   server.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
 }
 

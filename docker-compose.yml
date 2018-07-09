@@ -6,13 +6,13 @@ services:
     build: .
     environment:
       accessToken: "${YNAB_ACCESS_TOKEN}"
-      mongoUrl: 'mongodb://mongo:27017'
+      mongoUrl: 'mongodb://mongo:27017/ynabreporting'
       mongoDBName: 'YNABDoctor'
       budgetName: '${YNAB_BUDGET_NAME}'
     ports:
       - "62818:8080"
     command: ["/usr/src/wait-for-it/wait-for-it.sh", "mongo:27017", "--",  "npm", "start"]
-    depends_on: 
+    depends_on:
       - mongo
   mongo:
     image: mongo

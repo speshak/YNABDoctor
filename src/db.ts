@@ -14,7 +14,7 @@ export class DB {
         resolve()
       } else {
         MongoClient
-          .connect(process.env.mongoUrl)
+          .connect(encodeURI(process.env.mongoUrl))
           .then((client) => {
             this.client = client
             this.db = client.db(process.env.mongoDBName)
