@@ -1,5 +1,5 @@
 pkg_name=ynabdoctor
-pkg_origin=rufus
+pkg_origin=gruberbastian
 pkg_version="0.1.0"
 pkg_scaffolding="core/scaffolding-node"
 
