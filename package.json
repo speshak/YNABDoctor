@@ -2,7 +2,7 @@
   "name": "ynabreporting",
   "version": "0.0.1",
   "description": "Generate reports for your YNAB Budget",
-  "main": "src/main.js",
+  "main": "src/main.ts",
   "scripts": {
     "build": "tsc",
     "lint": "tslint -c tslint.json ./src/**/*.ts",
