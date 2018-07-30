@@ -6,6 +6,7 @@ import * as http from 'http'
 
 import { DB } from './db'
 import { initRoutes } from './routes'
+import authenticate from './middleware/authenticate'
 
 const setup = async () => {
   const app = express()
@@ -18,6 +19,7 @@ const setup = async () => {
   process.on('exit', db.close)
 
   // Setup routing
+  app.use(authenticate())
   app.use(cors())
   initRoutes(app, db)
 
