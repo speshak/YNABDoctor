@@ -41,7 +41,7 @@ authToken='Bearer YOUR_JWT_TOKEN'
 2. `docker-compose up` (or `docker-compose up -d` to background) to run the app
 3. Access via `localhost:62818`
 4. With every request, pass the following header:
-`Authorization, 'Bearer TESTTOKEN'
+`Authorization, 'Bearer TESTTOKEN'`
 
 ## Endpoints
 
