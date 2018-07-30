@@ -9,6 +9,7 @@ services:
       mongoUrl: 'mongodb://mongo:27017/ynabreporting'
       mongoDBName: 'YNABDoctor'
       budgetName: '${YNAB_BUDGET_NAME}'
+      authToken: 'Bearer TESTTOKEN'
     ports:
       - "62818:8080"
     command: ["/usr/src/wait-for-it/wait-for-it.sh", "mongo:27017", "--",  "npm", "start"]

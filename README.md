@@ -26,6 +26,7 @@ accessToken=YNAB_API_TOKEN
 mongoUrl=URL_TO_YOUR_MONGODB ('mongodb://localhost:27017')
 mongoDBName=DB_NAME_TO_YOUR_LIKING
 budgetName=YOUR_BUDGET_NAME
+authToken='Bearer YOUR_JWT_TOKEN'
 ```
 4. **Make sure you have MongoDB installed and running**
 5. `npm start`
@@ -39,6 +40,8 @@ budgetName=YOUR_BUDGET_NAME
 - `export YNAB_BUDGET_NAME=XYZ`
 2. `docker-compose up` (or `docker-compose up -d` to background) to run the app
 3. Access via `localhost:62818`
+4. With every request, pass the following header:
+`Authorization, 'Bearer TESTTOKEN'
 
 ## Endpoints
 
