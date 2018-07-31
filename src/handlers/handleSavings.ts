@@ -34,7 +34,8 @@ export default async function handleSpendings (db) {
 
     const savings = income + outcome
     savingsSum += savings
-    const savingsPercent = ((savings / income) * 100)
+    const savingsPercent = savings > 0 ? ((savings / income) * 100) : 0
+
     percentageSum += savingsPercent
     const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
 
