@@ -41,7 +41,8 @@ authToken='Bearer YOUR_JWT_TOKEN'
 2. `docker-compose up` (or `docker-compose up -d` to background) to run the app
 3. Access via `localhost:62818`
 4. With every request, pass the following header:
-`Authorization, 'Bearer TESTTOKEN'`
+`Authorization, 'Bearer TESTTOKEN'
+
 
 ## Endpoints
 
@@ -201,16 +202,6 @@ A return looks like this:
 6. `/spendingHabits` returns the top used payees, words and the highest expenses:
 ```
 {
-  "topExpenses": [
-    {
-      "amount": -2000,
-      "category": "Rent",
-      "date": "2018-06-26",
-      "payee": "Landlord",
-      "memo": "Move to new apartment"
-    },
-    ...
-  ],
   "topWords": [
     {
       "key": "Groceries",

@@ -38,7 +38,8 @@ export default async function handleSpendings (db) {
     const income: number = getAmount(incomeTransactions)
 
     spendingsSum += outcome
-    const spendingsPercent = ((outcome / income) * 100)
+
+    const spendingsPercent = outcome !== 0 ? ((outcome / income) * 100) : 0
     percentageSum += spendingsPercent
 
     const spendings = getGroupCategorySpendings(budgetMonth, categories, outcome)
@@ -53,7 +54,7 @@ export default async function handleSpendings (db) {
 
     averagePercent = percentageSum / i
     average = spendingsSum / i
-  } while (date < end)
+  } while (date <= end)
 
   result.averagePercent = (Math.round((averagePercent * -1) * 100) / 100).toFixed(2) + '%'
   result.average = Math.round((average * -1))

@@ -34,7 +34,8 @@ export default async function handleSpendings (db) {
 
     const savings = income + outcome
     savingsSum += savings
-    const savingsPercent = ((savings / income) * 100)
+    const savingsPercent = savings > 0 ? ((savings / income) * 100) : 0
+
     percentageSum += savingsPercent
     const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
 
@@ -49,7 +50,7 @@ export default async function handleSpendings (db) {
     averagePercent = percentageSum / i
     average = savingsSum / i
 
-  } while (date < end)
+  } while (date <= end)
 
   result.averagePercent = (Math.round(averagePercent * 100) / 100).toFixed(2) + '%'
   result.average = Math.round(average)
