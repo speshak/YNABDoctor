@@ -30,7 +30,7 @@ export default async function importYNAB (budgetName, db) {
 
     date = moment(date).add(1, 'M').format('YYYY-MM-DD')
     i = i + 1
-  } while (date < end)
+  } while (date <= end)
 
   try {
     await db.import('categories', categoryResponse.data.category_groups)
