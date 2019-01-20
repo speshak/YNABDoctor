@@ -7,7 +7,7 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json ./src/**/*.ts",
     "start": "node build/index.js",
-    "postinstall": "npm run buld",
+    "postinstall": "npm run build",
     "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
