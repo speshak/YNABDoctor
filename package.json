@@ -31,6 +31,7 @@
     "nodemon": "^1.17.5",
     "mongodb": "^3.1.1",
     "typescript": "^2.9.2",
+    "ts-node": "^7.0.0",
     "ynab": "^1.0.0"
   },
   "devDependencies": {
@@ -43,7 +44,6 @@
     "dotenv": "^6.0.0",
     "mocha": "^5.2.0",
     "source-map-loader": "^0.2.3",
-    "ts-node": "^7.0.0",
     "tslint": "^5.10.0",
     "tslint-config-standard": "^7.1.0"
   }
