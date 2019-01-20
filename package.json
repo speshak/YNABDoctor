@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "lint": "tslint -c tslint.json ./src/**/*.ts",
-    "start": "nodemon -e ts -w ./src -x ts-node src/main.ts",
+    "start": "node build/index.js",
+    "postinstall": "npm run buld",
     "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
