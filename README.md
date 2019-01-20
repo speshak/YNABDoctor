@@ -43,6 +43,7 @@ authToken='Bearer YOUR_JWT_TOKEN'
 4. With every request, pass the following header:
 `Authorization, 'Bearer TESTTOKEN'
 
+
 ## Endpoints
 
 So far there are seven working endpoints.
