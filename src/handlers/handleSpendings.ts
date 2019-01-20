@@ -54,7 +54,7 @@ export default async function handleSpendings (db) {
 
     averagePercent = percentageSum / i
     average = spendingsSum / i
-  } while (date < end)
+  } while (date <= end)
 
   result.averagePercent = (Math.round((averagePercent * -1) * 100) / 100).toFixed(2) + '%'
   result.average = Math.round((average * -1))
