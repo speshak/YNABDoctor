@@ -1,4 +1,3 @@
-import getBiggestExpenses from '../lib/getBiggestExpenses'
 import getMostUsedWords from '../lib/getMostUsedWords'
 import getMostUsedPayees from '../lib/getMostUsedPayees'
 
@@ -12,12 +11,10 @@ export default async function getSpendingHabits (db) {
   const end = getLastMonth(budgets, process.env.budgetName)
 
   const spendings = await db.getSpendings(start, end)
-  const topExpenses = getBiggestExpenses(spendings)
   const topWords = getMostUsedWords(spendings)
   const topPayees = getMostUsedPayees(spendings)
 
   return {
-    topExpenses,
     topWords,
     topPayees
   }
