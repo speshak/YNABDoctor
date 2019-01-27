@@ -41,8 +41,8 @@ const initRoutes = (app, db) => {
   })
 
   app.get('/import', async (req, res) => {
-    await importYNAB(process.env.budgetName ,db)
-    res.status(200).send('Import Complete!')
+    await importYNAB(process.env.budgetName, db)
+    res.status(200).send({msg: "Import Complete!"})
   })
 }
 
