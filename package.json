@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "tslint -c tslint.json ./src/**/*.ts",
-    "start": "node built/main.js",
+    "start": "node build/main.js",
     "postinstall": "npm run build",
     "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
