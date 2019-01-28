@@ -9,22 +9,23 @@ const getLastMonth = (budgets, budgetName) => budgets.find(b => b.name === budge
 export default async function handleSpendings (db) {
   const budgets = await db.get('budgets')
   const categories = await db.get('categories')
-
-  let date = getFirstMonth(budgets, process.env.budgetName)
   const end = getLastMonth(budgets, process.env.budgetName)
 
-  let i = 0
-
-  let result = {
-    averagePercent: '',
-    average: 0,
-    sumPerMonth: []
-  }
+  let date = getFirstMonth(budgets, process.env.budgetName)
 
   let percentageSum = 0
   let spendingsSum = 0
   let averagePercent = 0
   let average = 0
+  
+  let result = {
+    averagePercent: '',
+    average: 0,
+    sumPerMonth: [],
+  }
+
+  let i = 0
+  let ob = {}
 
   do {
     let startDate = date
@@ -45,7 +46,6 @@ export default async function handleSpendings (db) {
     const spendings = getGroupCategorySpendings(budgetMonth, categories, outcome)
     result[date] = spendings
 
-    let ob = {}
     ob[date] = Math.round(outcome * -1)
     result.sumPerMonth.push(ob)
 
