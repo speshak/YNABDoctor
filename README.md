@@ -189,14 +189,26 @@ A return looks like this:
 5. `/savings` returns the savings for every month and year
 ```
 {
-  "averagePercent": "30.49%",
-  "average": 9876,
-  "2018-03-01": {
-    "savings": -227,
-    "savingsPercent": "-27.10%"
-  },
-  ...
-}
+  "averagePercent": "50%",
+  "average": 500,
+  "sum": 2000,
+  "sumPerMonth": [
+    {
+      "2018-05-01": 600
+    },
+    {
+      "2018-06-01": 400
+    },
+    ...
+  ],
+  "percentagePerMonth": [
+    {      
+      "2018-05-01": "69.14%"
+    },
+    {
+      "2018-06-01": "48.17%"
+    },
+    ...
 ```
 
 6. `/spendingHabits` returns the top used payees, words and the highest expenses:
