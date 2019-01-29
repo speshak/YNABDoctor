@@ -20,8 +20,8 @@ export default async function handleSpendings (db) {
     averagePercent: '',
     average: 0,
     sum: 0,
-    sumPerMonth: [],
-    percentagePerMonth: [],
+    sumPerMonth: {},
+    percentagePerMonth: {},
   }
 
   let i = 0
@@ -41,15 +41,9 @@ export default async function handleSpendings (db) {
 
     percentageSum += savingsPercent
     const displaySavings = (Math.round(savingsPercent * 100) / 100).toFixed(2) + '%'
-  
-    let savingsObj = {}
-    let percentObj = {}
-   
-    savingsObj[date] = savings
-    percentObj[date] = displaySavings
 
-    result.sumPerMonth.push(savingsObj)
-    result.percentagePerMonth.push(percentObj)
+    result.sumPerMonth[date] = savings
+    result.percentagePerMonth[date] = displaySavings
 
     date = moment(date).add(1, 'M').format('YYYY-MM-DD')
     i = i + 1
